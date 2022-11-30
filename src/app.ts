@@ -220,5 +220,5 @@ console.log(printBook(myBook));
 myBook.markDamaged('missing back cover');*/
 // =============================================================
 // Task 04.02
-const logDamage: DamageLogger = (reason: string) => console.log( `Damaged: ${reason}`)
+const logDamage: DamageLogger = (reason: string) => console.log( `Damaged: ${reason}`);
 logDamage('missing back cover');
