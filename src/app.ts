@@ -23,6 +23,7 @@ enum Category {
     category: Category;
 }; */
 
+type BookProperties = keyof Book;
 interface Book {
     id: number;
     title: string;
@@ -37,6 +38,20 @@ interface Book {
 
 interface DamageLogger {
     (parametr: string): void;
+}
+
+interface Person {
+    name: string;
+    email: string;
+}
+
+interface  Author extends Person {
+    numBooksPublished: number;
+}
+
+interface  Librarian extends Person {
+    department: string;
+    assistCustomer: (custName: string, bookTitle: string) => void;
 }
 
 function getAllBooks(): readonly Book[] {
@@ -163,6 +178,11 @@ function printBook(book: Book): void {
         ${book.author}`);
 }
 
+function getProperty(book: Book, prop: BookProperties): any {
+    const value = book[prop];
+
+    return typeof value === 'function' ? value.name: value;
+}
 // ==============================================================================
 // Task 2.01
 /* console.log(getAllBooks());
@@ -204,7 +224,7 @@ Task 03.02 */
 // console.log(bookTitleTransform('12345'));
 // =============================================================
 // Task 04.01
-/* const myBook: Book = {
+const myBook: Book = {
     id: 5,
     title: 'Colors, Backgrounds, and Gradients',
     author: 'Eric A. Meyer',
@@ -216,9 +236,43 @@ Task 03.02 */
         console.log( `Damaged: ${reason}`);
     }
 };
-console.log(printBook(myBook));
-myBook.markDamaged('missing back cover');*/
+// console.log(printBook(myBook));
+// myBook.markDamaged('missing back cover');
 // =============================================================
 // Task 04.02
-const logDamage: DamageLogger = (reason: string) => console.log( `Damaged: ${reason}`);
-logDamage('missing back cover');
+// const logDamage: DamageLogger = (reason: string) => console.log( `Damaged: ${reason}`);
+// logDamage('missing back cover');
+// ===========================================================
+// Task 04.03
+const favouriteAuthor: Author = {
+    name: 'Anna',
+    email: 'anna@example.com',
+    numBooksPublished: 2
+};
+
+const  favoriteLibrarian: Librarian = {
+    name: 'Anna',
+    email: 'anna@example.com',
+    department: 'Classical',
+    assistCustomer: null
+};
+// ========================================================
+// Task 04.04
+const offer: any = {
+    book: {
+        title: 'Essential TypeScript',
+    },
+};
+
+// console.log(offer.magazine);
+// console.log(offer.magazine.getTitle());
+// console.log(offer.book.getTitle?.());
+// console.log(offer.book.authors?.[0]);
+
+// ===========================================================
+// Task 04.05
+// console.log(getProperty(myBook, 'title'));
+// console.log(getProperty(myBook, 'markDamaged'));
+// console.log(getProperty(myBook, 'isb'));
+// ===========================================================
+// Task 05.01
