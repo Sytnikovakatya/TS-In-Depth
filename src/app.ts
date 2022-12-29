@@ -1,14 +1,21 @@
-import { ReferenceItem, UL, RefBook } from './classes';
-import { Librarian, Logger, TOptions } from './interfaces';
-import { Category } from './enum';
+import { ReferenceItem, UL, RefBook, Shelf } from './classes';
+import { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
+import { Category } from './enums';
 import { Library } from './classes/library';
 import {
+    purge,
     printRefBook,
     calcTotalPages,
     getBookAuthorByIndex,
     getBookByID,
     getBookTitlesByCategory,
     getAllBooks,
+    getObjectProperty,
+    getBooksByCategoryPromise,
+    getTitles,
+    logSearchResults,
+    getBooksByCategory,
+    logCategorySearch,
 } from './functions';
 
 showHello('greeting', 'TypeScript');
@@ -148,7 +155,7 @@ const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 printRefBook(favoriteLibrarian); */
 
 // Task 06.05
-const flag = false;
+// const flag = false;
 
 /* if (flag) {
     import('./classes')
@@ -162,96 +169,97 @@ const flag = false;
         .catch(err => console.log(err))
         .finally(() => console.log('Complete!'));
 } */
-if (flag) {
+/* if (flag) {
     const o = await import('./classes');
     const reader = new o.Reader();
     reader.name = 'Anna';
     reader.take(getAllBooks()[0]);
 
     console.log(reader);
-}
+} */
 
 // Task 06.06
 // let library: Library = new Library();
-let library: Library = {
+/* let library: Library = {
     id: 1,
     name: 'Oleg',
     address: 'Kyiv',
 };
-// Generics
-// T[] or Array<T>
-/* function purge<T>(inventory: Array<T>): T[] {
-    return inventory.slice(2);
-}
+*/
+// Task 07.01
 
-const inventory: Book[] = [
-
-    { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software},
+/* const inventory: Book[] = [
+    { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software },
 
     { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
 
     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
 
-    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
-
+    { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software },
 ];
+*/
+// const result1 = purge<Book>(inventory);
+// console.log(result1);
 
-const result = purge<string>(['123', '123', '245']);
-console.log(result);
+// const result2 = purge([1, 2, 3, 4, 5]);
+// console.log(result2);
 
-interface Magazine {
-    title: string;
-    publisher: string;
-}
+// Task 07.02
+/* const bookShelf = new Shelf<Book>();
+inventory.forEach(book => bookShelf.add(book)); */
+// console.log(bookShelf.getFirst().title);
+// console.log(bookShelf.getFirst().category);
 
-interface Shelfitem {
-    title: string;
-
-}
-
-export default class Shelf<T extends Shelfitem> {
-    private items: T[] = [];
-    add(item: T): void {
-        this.items.push(item);
-    }
-
-    getFirst() {
-        return this.items[0];
-    }
-    find(title: string): T {
-        return this.items.find((item: T) => item.title === title);
-    }
-    printTitle(): void {
-        this.items.forEach(item => console.log(item.title));
-    }
-}
-
-const  bookShelf = new Shelf<Book>();
-inventory.forEach(book => bookShelf.add(book));
-console.log(bookShelf.getFirst().title);
-
-const magazines: Magazine[] = [
+/* const magazines: Magazine[] = [
     { title: 'Programming Language Monthly', publisher: 'Code Mags' },
     { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
-    { title: 'Five Points', publisher: 'GSU' }
+    { title: 'Five Points', publisher: 'GSU' },
 ];
+
 const magazineShelf = new Shelf<Magazine>();
-magazines.forEach(mag => magazineShelf.add(mag));
-console.log(magazineShelf.getFirst().title);
-magazineShelf.printTitle();
-console.log(magazineShelf.find('Five Points'));
+magazines.forEach(mag => magazineShelf.add(mag)); */
+// console.log(magazineShelf.getFirst().title);
 
-console.log(getObjectProperty(magazines[0], 'title'));
-console.log(getObjectProperty(inventory[1], 'author'));
-console.log(getObjectProperty<Book, 'author' | 'title'>(inventory[1], 'author'));
-*/
-/* export  class Shelf2 {
-    private items: Book[] | Magazine[] = [];
-    add(item: any): void {
-        this.items.push(item);
-    }
+// Task 07.03
+// magazineShelf.printTitles();
+// console.log(magazineShelf.find('Five Points'));
 
-    getFirst() {
-        return this.items[0];
-    }
-} */
+// console.log(getObjectProperty(magazines[0], 'title'));
+// console.log(getObjectProperty(inventory[1], 'author'));
+// console.log(getObjectProperty<Book, 'author' | 'title'>(inventory[1], 'author'));
+
+// Task 08.04
+// const refBook: refBook= new RefBook(1, 'Learn Typescript', 2022, 2);
+// refBook.printItem();
+
+// Task 08.05
+// const favoriteLibrarian = new UL.University.librarian();
+// console.log(favoriteLibrarian);
+// favoriteLibrarian.name = 'Anna';
+// favouriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+
+// Task 09.01
+// console.log('Begin');
+// getBooksByCategory(Category.Javascript, logCategorySearch);
+// getBooksByCategory(Category.Software, logCategorySearch);
+// console.log('End');
+// Task 09.02
+/* console.log('Begin');
+getBooksByCategoryPromise(Category.Javascript)
+    .then(titles => {
+        console.log(titles);
+        return Promise.resolve(titles.length);
+    })
+    .then(n => console.log(n))
+    .catch(reason => console.log(reason));
+
+getBooksByCategoryPromise(Category.Software)
+    .then(titles => console.log(titles))
+    .catch(reason => console.log(reason));
+console.log('End'); */
+
+// Task 09.03
+// console.log('Begin!');
+// logSearchResults(Category.Javascript);
+// logSearchResults(Category.Software).catch(err => console.log(err));
+// console.log('End!');

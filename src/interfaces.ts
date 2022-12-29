@@ -1,4 +1,4 @@
-import { Category } from './enum';
+import { Category } from './enums';
 
 interface Book {
     id: number;
@@ -39,4 +39,33 @@ interface TOptions {
     speed?: number;
 }
 
-export { Book, Person, Author, Librarian, A, TOptions, DamageLogger as Logger };
+interface Magazine {
+    title: string;
+    publisher: string;
+}
+
+interface Shelfitem {
+    title: string;
+}
+
+interface LibMgrCallback {
+    (err: Error | null, titles: string[] | null): void;
+}
+
+interface Callback<T> {
+    (err: Error | null, data: T | null): void;
+}
+
+export {
+    Book,
+    Person,
+    Author,
+    Librarian,
+    A,
+    TOptions,
+    Magazine,
+    Shelfitem,
+    DamageLogger as Logger,
+    LibMgrCallback,
+    Callback,
+};
