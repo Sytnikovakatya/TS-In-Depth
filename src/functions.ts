@@ -86,7 +86,7 @@ export function getBookByID(id: Book['id']): BookOrUndefined {
     return books.find(book => book.id === id);
 }
 
-export function сheckoutBooks(customer: string, ...bookIDs: number[]): string[] {
+export function checkoutBooks(customer: string, ...bookIDs: number[]): string[] {
     console.log(`Customer name: ${customer}`);
     return bookIDs.map(id => getBookByID(id)).filter(book => book.available).map(book => book.title);
 }

@@ -16,7 +16,9 @@ import {
     logSearchResults,
     getBooksByCategory,
     logCategorySearch,
+    createCustomer,
 } from './functions';
+import { BookRequiredFields, CreateCustomerFunctionType, UpdatedBook } from './types';
 
 showHello('greeting', 'TypeScript');
 
@@ -227,6 +229,30 @@ magazines.forEach(mag => magazineShelf.add(mag)); */
 // console.log(getObjectProperty(magazines[0], 'title'));
 // console.log(getObjectProperty(inventory[1], 'author'));
 // console.log(getObjectProperty<Book, 'author' | 'title'>(inventory[1], 'author'));
+
+// 07.04
+/* const bookRequiredFields: BookRequiredFields = {
+    author: 'Anna',
+    available: false,
+    category: Category.Angular,
+    id: 1,
+    markDamaged: null,
+    pages: 200,
+    title: 'Learn Angular',
+};
+
+const updatedBook: UpdatedBook = {
+    author: 'Anna',
+    available: false,
+    category: Category.Angular,
+    id: 1,
+};
+
+let params: Parameters<CreateCustomerFunctionType>;
+params = ['Anna', 30, 'Kyiv'];
+createCustomer(...params); */
+
+// 07.05
 
 // Task 08.04
 // const refBook: refBook= new RefBook(1, 'Learn Typescript', 2022, 2);
