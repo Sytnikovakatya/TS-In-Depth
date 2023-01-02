@@ -128,4 +128,5 @@ export function positiveInteger(target: any, propName: string, descriptor: Prope
             originalSet.call(this, value);
         }
     };
+    return descriptor;
 }
