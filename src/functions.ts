@@ -161,8 +161,6 @@ export function purge<T>(inventory: Array<T>): T[] {
     return inventory.slice(2);
 }
 
-
-
 // export function getBooksByCategory(category: Category, callback: LibMgrCallback): void {
 export function getBooksByCategory(category: Category, callback: Callback<string[]>): void {
     setTimeout(() => {

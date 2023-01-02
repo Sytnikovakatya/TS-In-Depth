@@ -148,17 +148,15 @@ const options2 = setDefaultConfig(options);
 console.log(options);
 console.log(options2);
 console.log(Object.is(options, options2)); */
-
+// ==========================================================================
 // Task 06.03, 06.04
 /* const refBook: RefBook = new RefBook(1, 'Learn Typescript', 2022, 2);
 printRefBook(refBook);
-
 const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 printRefBook(favoriteLibrarian); */
 
 // Task 06.05
 // const flag = false;
-
 /* if (flag) {
     import('./classes')
         .then(o => {
@@ -170,13 +168,12 @@ printRefBook(favoriteLibrarian); */
         })
         .catch(err => console.log(err))
         .finally(() => console.log('Complete!'));
-} */
-/* if (flag) {
+}
+ if (flag) {
     const o = await import('./classes');
     const reader = new o.Reader();
     reader.name = 'Anna';
     reader.take(getAllBooks()[0]);
-
     console.log(reader);
 } */
 
@@ -186,10 +183,9 @@ printRefBook(favoriteLibrarian); */
     id: 1,
     name: 'Oleg',
     address: 'Kyiv',
-};
-*/
+};*/
+// ====================================================================================================================
 // Task 07.01
-
 /* const inventory: Book[] = [
     { id: 10, title: 'The C Programming Language', author: '???', available: true, category: Category.Software },
 
@@ -198,11 +194,9 @@ printRefBook(favoriteLibrarian); */
     { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
 
     { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software },
-];
-*/
+];*/
 // const result1 = purge<Book>(inventory);
 // console.log(result1);
-
 // const result2 = purge([1, 2, 3, 4, 5]);
 // console.log(result2);
 
@@ -211,13 +205,11 @@ printRefBook(favoriteLibrarian); */
 inventory.forEach(book => bookShelf.add(book)); */
 // console.log(bookShelf.getFirst().title);
 // console.log(bookShelf.getFirst().category);
-
 /* const magazines: Magazine[] = [
     { title: 'Programming Language Monthly', publisher: 'Code Mags' },
     { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
     { title: 'Five Points', publisher: 'GSU' },
 ];
-
 const magazineShelf = new Shelf<Magazine>();
 magazines.forEach(mag => magazineShelf.add(mag)); */
 // console.log(magazineShelf.getFirst().title);
@@ -225,7 +217,6 @@ magazines.forEach(mag => magazineShelf.add(mag)); */
 // Task 07.03
 // magazineShelf.printTitles();
 // console.log(magazineShelf.find('Five Points'));
-
 // console.log(getObjectProperty(magazines[0], 'title'));
 // console.log(getObjectProperty(inventory[1], 'author'));
 // console.log(getObjectProperty<Book, 'author' | 'title'>(inventory[1], 'author'));
@@ -240,35 +231,57 @@ magazines.forEach(mag => magazineShelf.add(mag)); */
     pages: 200,
     title: 'Learn Angular',
 };
-
 const updatedBook: UpdatedBook = {
     author: 'Anna',
     available: false,
     category: Category.Angular,
     id: 1,
 };
-
 let params: Parameters<CreateCustomerFunctionType>;
 params = ['Anna', 30, 'Kyiv'];
 createCustomer(...params); */
+// ======================================================================================
+// Task 08.01
+// const favoriteLibrarian = new UL.UniversityLibrarian();
+// favoriteLibrarian['a'] = 1;
+// Task 08.02
+// const favoriteLibrarian = new UL.UniversityLibrarian();
+// console.log(favoriteLibrarian);
+// favoriteLibrarian['printLibrarian']();
 
-// 07.05
+// Task 08.03
+// const favoriteLibrarian = new UL.UniversityLibrarian();
+// console.log(favoriteLibrarian);
+// favoriteLibrarian.teachCommunity = null;
 
 // Task 08.04
-// const refBook: refBook= new RefBook(1, 'Learn Typescript', 2022, 2);
+// const refBook: RefBook = new RefBook(1, 'Learn Typescript', 2022, 2);
 // refBook.printItem();
 
 // Task 08.05
-// const favoriteLibrarian = new UL.University.librarian();
+// const favoriteLibrarian = new UL.UniversityLibrarian();
 // console.log(favoriteLibrarian);
 // favoriteLibrarian.name = 'Anna';
-// favouriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+// favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
 
+// Task 08.06
+// const favoriteLibrarian = new UL.UniversityLibrarian();
+// favoriteLibrarian.name = 'Alisa';
+// console.log(favoriteLibrarian.name);
+// favoriteLibrarian.assistCustomer('Boris', 'Learn TypeScript');
+// console.log(favoriteLibrarian);
+
+// 08.07
+// const refBook: RefBook = new RefBook(1, 'Learn Typescript', 2022, 2);
+// refBook.copies = 10;
+// console.log(refBook.copies);
+// =====================================================================================
 // Task 09.01
 // console.log('Begin');
 // getBooksByCategory(Category.Javascript, logCategorySearch);
 // getBooksByCategory(Category.Software, logCategorySearch);
 // console.log('End');
+
 // Task 09.02
 /* console.log('Begin');
 getBooksByCategoryPromise(Category.Javascript)
@@ -278,7 +291,6 @@ getBooksByCategoryPromise(Category.Javascript)
     })
     .then(n => console.log(n))
     .catch(reason => console.log(reason));
-
 getBooksByCategoryPromise(Category.Software)
     .then(titles => console.log(titles))
     .catch(reason => console.log(reason));
